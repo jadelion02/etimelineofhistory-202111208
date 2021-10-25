@@ -226,21 +226,122 @@ img {vertical-align: middle;}
 </div>
 
 
+<!-- Menu List -->
+<div class="dropdown">
+<div id="mySidebar" class="sidebar" style="width: 250px;">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+    <a href="#">&emsp;Reserved</a>
+<!--    <div class="dropdown-container"> -->
+<!--        <a href="Introduction.htm" target="_blank">&emsp;Reserved 2</a> -->
+<!--		<a href="ReadMeFirst.htm" target="_blank">&emsp;Reserved 3</a> -->
+		
+        <button class="dropdown-btn">&emsp;Timelines &emsp;&emsp; </button>
+        <div class="dropdown-container">
+    		<a href="Creation.htm">&emsp;&emsp;Creation</a>
+    		<a href="History.htm">&emsp;&emsp;History</a>
+    		<a href="Revelation.htm">&emsp;&emsp;Revelation</a>
+    	</div>
+<!--        <a href="#">&emsp;Reserved 4</a> -->
+<!--        <a href="#">&emsp;Reserved 5</a> -->
+<!--        <a href="#">&emsp;Reserved 6</a> -->
+
+</div>
+</div>
 
 <br>
 
+<script>
+// Menu Dropdown
+const dropdowns = document.querySelectorAll(".dropdown");
+
+dropdowns.forEach(el => {
+
+  const button = el.querySelector(".dropdown-btn");
+  
+  button.addEventListener("click", () => {
+    // Close all
+    [...dropdowns].filter(x => x != el).forEach(el => el.classList.remove("is-open"));
+    // Toggle one
+    el.classList.toggle("is-open");
+  });
+});
+
+</script>
+
+
+<!-- 3 Dots -->
 <div style="text-align: center;">
   <span class="dot" onclick="currentSlide(1)"></span> 
   <span class="dot" onclick="currentSlide(2)"></span> 
   <span class="dot" onclick="currentSlide(3)"></span> 
   
 </div>
-
-
-
 <!--Scrolling Images ends -->
 
 
+	  <!-- Menu Script -->
+<script>
+function openNav() {
+    document.getElementById("mySidebar").style.width = "250px";
+//    document.getElementById("curtain_menu").style.marginLeft = "100px";
+}
+function closeNav() {
+    document.getElementById("mySidebar").style.width = "0";
+    document.getElementById("curtain_menu").style.marginLeft = "0";
+}
+document.onclick = function (e) {
+    if (e.target.id !== 'mySidebar' && e.target.id !== 'btn_frontpage_menu') {
+        if (e.target.offsetParent && e.target.offsetParent.id !== 'mySidebar')
+            closeNav()
+    }
+}
+</script>
+
+<script>
+/*Menu Dropdown*/
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+  this.classList.toggle("active");
+  var dropdownContent = this.nextElementSibling;
+  if (dropdownContent.style.display === "block") {
+  dropdownContent.style.display = "none";
+  } else {
+  dropdownContent.style.display = "block";
+  }
+  });
+}
+</script>
+
+<!-- Menu Button -->
+<div id="curtain_menu">
+    <button id="btn_frontpage_menu" class="openbtn" onclick="openNav()">☰ Menu</button>
+<!-- Menu Button Ends -->
+
+<script>
+// Caret Rotation
+const dropdowns = document.querySelectorAll(".dropdown");
+
+dropdowns.forEach(el => {
+
+  const button = el.querySelector(".dropdown-btn");
+  
+  button.addEventListener("click", () => {
+    // Close all
+    [...dropdowns].filter(x => x != el).forEach(el => el.classList.remove("is-open"));
+    // Toggle one
+    el.classList.toggle("is-open");
+  });
+});
+
+</script>
+
+  
+	  
+	  
 <!-- xxxxxxxxxxxxxxxxxxxx -->
 
 
