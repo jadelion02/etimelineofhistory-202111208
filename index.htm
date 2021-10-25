@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -6,7 +6,7 @@
 <link rel="shortcut icon" type="image/ico" href="img/favicon.ico"/>
 <script src="js/fp.js"></script>
 <script src="js/jquery-min.js"></script>
-
+ 
 <style>
 
 
@@ -28,7 +28,7 @@
 img {vertical-align: middle;}
 
 /* Slideshow container */
-.slideshow-container {
+ .slideshow-container {
   max-width: 1200px;
   position: relative;
   margin: auto;
@@ -116,23 +116,22 @@ img {vertical-align: middle;}
 }
 
 /* On smaller screens, decrease text size */
-@media only screen and (max-width: 300px) {
+@media only screen and (max-width: 700px) {
   .prev, .next,.text {font-size: 11px}
+  .sidebar {background-color: black;}  
+
+  }
+
+/*Reponsive images */
+  .responsive {
+      width: 100%;
+      height: auto;
 }
-
-
-        /*Reponsive images */
-        .responsive {
-            width: 100%;
-            height: auto;
-}
-
-
 
   body {font-family:Verdana, sans-serif;}
 /*  p {padding:20px 0;} */
 
-  #backtop 
+#backtop 
 {
   position: fixed;
   left:auto;right: 20px;top:auto;bottom: 20px;
@@ -153,26 +152,133 @@ img {vertical-align: middle;}
   display:none;
 }
 
-  #backtop:hover
+#backtop:hover
 {
      background-color:#27CFC3;
 }
-  #backtop.mcOut 
+#backtop.mcOut 
 {
       opacity:0;
 }
   
-
-	#more {display: none;}
+#more {display: none;}
  
 
-    @media (max-width: 600px) { 
-/*		body {background: lightgrey;} */
-/*		height: 80vh; */
-		img {width: 100%; height: auto;}
-		min-height: -webkit-fill-available;
-		}
-	} 
+
+.sidebar {
+  font-family: sans-serif;
+  /* max-height: 30vh !important; */
+  /* height: 100vh; */
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0px;
+  left: 38px;
+  background-color: ;
+  overflow-x: hidden;
+  transition: 0.4s !important;
+  padding-top: 56px;
+  padding-bottom: 10px;
+  opacity: 0.9;
+}
+
+.sidebar a,
+.dropdown-btn {
+  padding: 8px 8px 6px 32px;
+  text-decoration: none;
+  font-size: 18px;
+  color: rgb(195, 195, 195);
+  display: block;
+  background: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+  transition: 0.3s;
+  border: none;
+}
+
+.dropdown-container a {
+  color: rgb(174, 174, 174) !important;
+}
+
+.sidebar a:hover,
+.dropdown-btn:hover,
+.dropdown-container a:hover {
+  color: red !important;
+	font-weight: bold;
+  /* background-color: #5c5c5c; */
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 10px;
+  font-size: 36px; !important
+  margin-right: 5px;
+  text-align: right;
+  right: 0px;
+  color: yellow !important;  
+}
+
+.openbtn {
+  font-size: 16px !important;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: transparent;
+  color: darkred;
+  padding: 0px 15px;
+  border: none;
+  float: left;
+}
+
+#main {
+  position :absolute;
+  width: 100%;
+  height: 100%;
+  left: 100px
+}
+
+/* .sidebar {display: none;} */
+
+
+
+
+/* Add an active class to the active dropdown button */
+.active {
+  background-color: ;
+  color: silver;
+}
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color 
+and some left padding to change the design of the dropdown content */
+.dropdown-container {
+  display: none;
+/*  background-color: #262626; */
+  background-color: ;
+  padding-left: 8px;
+}
+
+
+/*QuickReset*/ 
+
+.dropdown-btn::after {
+  display: inline-block;
+  content: "\25BC";
+  transition: transform 0.3s;
+}
+
+.dropdown.is-open .dropdown-btn:after {
+  transform: rotate(180deg);
+}
+
+.dropdown.is-open .dropdown-container {
+  display: block;
+}
+
+
+
+
+
 
 </style>
 </head>
@@ -198,17 +304,16 @@ img {vertical-align: middle;}
 
 
 <!-- Scrolling Images --><br>
-
 <div class="slideshow-container">
-
 <div class="mySlides fade">
+
   <div class="numbertext"><font color="grey">1. 創造 - 遠離的過去 Creation - the Distance Past</div>
 	<img src="img/img1.jpg" style="width: 100%; height: auto"> 
   <div class="text"><a href="Creation.htm"><font size="3" font face="Times New Roman" color="white">創造 CREATION</a></div>
 </div>
 
 <div class="mySlides fade">
-  <div class="numbertext"><font color="white"> 2. 歷史 - 近期的過去 History - the Immediate Past</div>
+  <div class="numbertext"><font color="white">2. 歷史 - 近期的過去 History - the Immediate Past</div>
   <img src="img/img2.jpg" style="width: 100%;">
   <div class="text"><a href="History.htm"><font size="3" font face="Times New Roman" color="white">歷史 HISTORY</a></div>
 </div>
@@ -218,11 +323,8 @@ img {vertical-align: middle;}
   <img src="img/img3.jpg" style="width: 100%;">
   <div class="text"><a href="Revelation.htm"><font size="3" font face="Times New Roman" color="white">啟示 REVELATION</a></div>
 </div>
-
-
 <a class="prev" onclick="plusSlides(-1)">❮</a>
 <a class="next" onclick="plusSlides(1)">❯</a>
-  
 </div>
 
 
@@ -269,17 +371,18 @@ dropdowns.forEach(el => {
 </script>
 
 
+
+
 <!-- 3 Dots -->
 <div style="text-align: center;">
   <span class="dot" onclick="currentSlide(1)"></span> 
   <span class="dot" onclick="currentSlide(2)"></span> 
   <span class="dot" onclick="currentSlide(3)"></span> 
-  
 </div>
 <!--Scrolling Images ends -->
 
 
-	  <!-- Menu Script -->
+<!-- Menu Script -->
 <script>
 function openNav() {
     document.getElementById("mySidebar").style.width = "250px";
@@ -338,7 +441,6 @@ dropdowns.forEach(el => {
 });
 
 </script>
-
   
 	  
 	  
