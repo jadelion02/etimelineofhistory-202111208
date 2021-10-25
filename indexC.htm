@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -116,18 +116,17 @@ img {vertical-align: middle;}
 }
 
 /* On smaller screens, decrease text size */
-@media only screen and (max-width: 300px) {
+@media only screen and (max-width: 700px) {
   .prev, .next,.text {font-size: 11px}
+  .sidebar {background-color: black;}  
+  .sidebar .closebtn {top: 0px;}
+  }
+
+/*Reponsive images */
+  .responsive {
+      width: 100%;
+      height: auto;
 }
-
-
-        /*Reponsive images */
-        .responsive {
-            width: 100%;
-            height: auto;
-}
-
-
 
   body {font-family:Verdana, sans-serif;}
 /*  p {padding:20px 0;} */
@@ -162,19 +161,123 @@ img {vertical-align: middle;}
       opacity:0;
 }
   
-
-
-	#more {display: none;}
+#more {display: none;}
  
 
-    @media (max-width: 600px) { 
-/*		body {background: lightgrey;} */
-/*		height: 80vh; */
-		img {width: 100%; height: auto;}
-		min-height: -webkit-fill-available;
-		}
-	} 
-	
+
+.sidebar {
+  font-family: sans-serif;
+  /* max-height: 30vh !important; */
+  /* height: 100vh; */
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0px;
+  left: 38px;
+  background-color: ;
+  overflow-x: hidden;
+  transition: 0.4s !important;
+  padding-top: 56px;
+  padding-bottom: 10px;
+  opacity: 0.9;
+}
+
+.sidebar a,
+.dropdown-btn {
+  padding: 8px 8px 6px 32px;
+  text-decoration: none;
+  font-size: 18px;
+  color: rgb(195, 195, 195);
+  display: block;
+  background: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+  transition: 0.3s;
+  border: none;
+}
+
+.dropdown-container a {
+  color: rgb(174, 174, 174) !important;
+}
+
+.sidebar a:hover,
+.dropdown-btn:hover,
+.dropdown-container a:hover {
+  color: red !important;
+	font-weight: bold;
+  /* background-color: #5c5c5c; */
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 10px;
+  font-size: 36px; !important
+  margin-right: 5px;
+  text-align: right;
+  right: 0px;
+  color: yellow !important;  
+}
+
+.openbtn {
+  font-size: 16px !important;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: transparent;
+  color: darkred;
+  padding: 0px 15px;
+  border: none;
+  float: left;
+}
+
+#main {
+  position :absolute;
+  width: 100%;
+  height: 100%;
+  left: 100px
+}
+
+/* .sidebar {display: none;} */
+
+
+
+
+/* Add an active class to the active dropdown button */
+.active {
+  background-color: ;
+  color: silver;
+}
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color 
+and some left padding to change the design of the dropdown content */
+.dropdown-container {
+  display: none;
+/*  background-color: #262626; */
+  background-color: ;
+  padding-left: 8px;
+}
+
+
+/*QuickReset*/ 
+
+.dropdown-btn::after {
+  display: inline-block;
+  content: "\25BC";
+  transition: transform 0.3s;
+}
+
+.dropdown.is-open .dropdown-btn:after {
+  transform: rotate(180deg);
+}
+
+.dropdown.is-open .dropdown-container {
+  display: block;
+}
+
+
+/* .sidebar {display: none;} */
+
 </style>
 </head>
 
@@ -199,10 +302,9 @@ img {vertical-align: middle;}
 
 
 <!-- Scrolling Images --><br>
-
 <div class="slideshow-container">
-
 <div class="mySlides fade">
+
   <div class="numbertext"><font color="grey">1. 創造 - 遠離的過去 Creation - the Distance Past</div>
 	<img src="img/img1.jpg" style="width: 100%; height: auto"> 
   <div class="text"><a href="Creation.htm"><font size="3" font face="Times New Roman" color="white">創造 CREATION</a></div>
@@ -219,27 +321,128 @@ img {vertical-align: middle;}
   <img src="img/img3.jpg" style="width: 100%;">
   <div class="text"><a href="Revelation.htm"><font size="3" font face="Times New Roman" color="white">啟示 REVELATION</a></div>
 </div>
-
-
 <a class="prev" onclick="plusSlides(-1)">❮</a>
 <a class="next" onclick="plusSlides(1)">❯</a>
   
 </div>
 
 
+<!-- Menu List -->
+<div class="dropdown">
+<div id="mySidebar" class="sidebar" style="width: 250px;">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+    <font size="+2" font face="" color="black">
+    <a href="">&emsp;預留</a>
+<!--    <div class="dropdown-container"> -->
+<!--        <a href="">&emsp;前序</a> -->
+<!--		<a href="ReadMeFirst.htm" target="_blank">&emsp;Instructions</a> -->
 
+        <button class="dropdown-btn">&emsp;時間表&emsp;&emsp; </button>
+        <div class="dropdown-container">
+    		<a href="Creation.htm">&emsp;&emsp;創造</a>
+    		<a href="History.htm">&emsp;&emsp;歷史</a>
+    		<a href="Revelation.htm">&emsp;&emsp;啟示</a>
+    	</div>   	
+<!--        <a href="#">&emsp;References</a> -->
+<!--        <a href="#">&emsp;Biography</a> -->
+<!--        <a href="#">&emsp;Disclaimer</a> -->
+        </font>
+    </div>
+</div>
 <br>
 
+<script>
+// Menu Dropdown
+const dropdowns = document.querySelectorAll(".dropdown");
+
+dropdowns.forEach(el => {
+
+  const button = el.querySelector(".dropdown-btn");
+  
+  button.addEventListener("click", () => {
+    // Close all
+    [...dropdowns].filter(x => x != el).forEach(el => el.classList.remove("is-open"));
+    // Toggle one
+    el.classList.toggle("is-open");
+  });
+});
+
+</script>
+
+
+
+<!-- 3 Dots -->
 <div style="text-align: center;">
   <span class="dot" onclick="currentSlide(1)"></span> 
   <span class="dot" onclick="currentSlide(2)"></span> 
   <span class="dot" onclick="currentSlide(3)"></span> 
-  
 </div>
-
-
-
 <!--Scrolling Images ends -->
+
+
+<!-- Menu Script -->
+<script>
+function openNav() {
+    document.getElementById("mySidebar").style.width = "250px";
+//    document.getElementById("curtain_menu").style.marginLeft = "100px";
+}
+function closeNav() {
+    document.getElementById("mySidebar").style.width = "0";
+    document.getElementById("curtain_menu").style.marginLeft = "0";
+}
+document.onclick = function (e) {
+    if (e.target.id !== 'mySidebar' && e.target.id !== 'btn_frontpage_menu') {
+        if (e.target.offsetParent && e.target.offsetParent.id !== 'mySidebar')
+            closeNav()
+    }
+}
+</script>
+
+<script>
+/*Menu Dropdown*/
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+  this.classList.toggle("active");
+  var dropdownContent = this.nextElementSibling;
+  if (dropdownContent.style.display === "block") {
+  dropdownContent.style.display = "none";
+  } else {
+  dropdownContent.style.display = "block";
+  }
+  });
+}
+</script>
+
+
+<!-- Menu Button -->
+<div id="curtain_menu">
+    <button id="btn_frontpage_menu" class="openbtn" onclick="openNav()">☰ 內容</button>
+<!-- Menu Button Ends -->
+
+
+
+<script>
+// Caret Rotation
+const dropdowns = document.querySelectorAll(".dropdown");
+
+dropdowns.forEach(el => {
+
+  const button = el.querySelector(".dropdown-btn");
+  
+  button.addEventListener("click", () => {
+    // Close all
+    [...dropdowns].filter(x => x != el).forEach(el => el.classList.remove("is-open"));
+    // Toggle one
+    el.classList.toggle("is-open");
+  });
+});
+
+</script>
+
 
 
 <!-- xxxxxxxxxxxxxxxxxxxx -->
